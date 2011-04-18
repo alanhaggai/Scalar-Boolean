@@ -54,7 +54,7 @@ __END__
     $value = undef;    # $value gets set to 0
     $value = ();       # $value gets set to 0
 
-    unbooleanise $value;  # same as unbooleanize
+    unbooleanise $value;  # same as `unbooleanize`
     $value = [];  # $value gets set to []
     …
 
