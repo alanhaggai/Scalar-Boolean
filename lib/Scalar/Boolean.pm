@@ -46,6 +46,8 @@ __END__
 
 =head1 SYNOPSIS
 
+    use Scalar::Boolean;
+
     booleanize my $value;  # you can even use `booleanise`
     $value = [];       # $value gets set to 1
     $value = 'Perl';   # $value gets set to 1
