@@ -41,8 +41,6 @@ sub unbooleanise(\$;\$\$\$\$\$\$\$\$\$\$\$\$\$\$\$\$\$\$\$) {
 
 __END__
 
-=encoding utf-8
-
 =head1 SYNOPSIS
 
     use Scalar::Boolean;
@@ -57,7 +55,6 @@ __END__
 
     unbooleanise $value;  # same as `unbooleanize`
     $value = 'foo';  # $value gets set to 'foo'
-    …
 
 =method C<booleanise> or C<booleanize>
 
