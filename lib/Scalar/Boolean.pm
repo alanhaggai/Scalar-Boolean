@@ -60,11 +60,11 @@ __END__
 
 =method C<booleanise> or C<booleanize>
 
-Accepts scalar variables which will be booleani{s|z}ed. Once booleani{s|z}ed,
+Accepts scalar variables which will be C<booleanise>d. Once C<booleanise>d,
 the variable will convert all values that are assigned to it to their
-corresponding Boolean values. No effect on already booleani{s|z}ed variables.
+corresponding Boolean values. No effect on already C<booleanise>d variables.
 
 =method C<unbooleanise> or C<unbooleanize>
 
-Accepts scalar variables which will be unbooleani{s|z}ed if already
-booleani{s|z}ed. No effect if variables passed are not booleanised already.
+Accepts scalar variables which will be C<unbooleanise>d if already
+C<booleanise>d. No effect on not already C<booleanise>d variables.
