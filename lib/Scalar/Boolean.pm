@@ -56,7 +56,7 @@ __END__
     $value = ();       # $value gets set to 0
 
     unbooleanise $value;  # same as `unbooleanize`
-    $value = [];  # $value gets set to []
+    $value = 'foo';  # $value gets set to 'foo'
     …
 
 =method C<booleanise> or C<booleanize>
