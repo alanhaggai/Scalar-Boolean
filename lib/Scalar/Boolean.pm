@@ -2,7 +2,8 @@ use strict;
 use warnings;
 
 BEGIN {
-    *Scalar::Boolean::booleanize = \&Scalar::Boolean::booleanise;
+    *Scalar::Boolean::booleanize   = \&Scalar::Boolean::booleanise;
+    *Scalar::Boolean::unbooleanize = \&Scalar::Boolean::unbooleanise;
 }
 
 package Scalar::Boolean;
@@ -10,7 +11,7 @@ package Scalar::Boolean;
 # ABSTRACT: Makes scalar variables store Boolean values only
 
 use base 'Exporter';
-our @EXPORT = qw( booleanise booleanize );
+our @EXPORT = qw( booleanise booleanize unbooleanise unbooleanize );
 
 use Tie::Scalar;
 use base 'Tie::StdScalar';
@@ -32,9 +33,16 @@ sub booleanise(\$;\$\$\$\$\$\$\$\$\$\$\$\$\$\$\$\$\$\$\$) {
     return;
 }
 
+sub unbooleanise(\$;\$\$\$\$\$\$\$\$\$\$\$\$\$\$\$\$\$\$\$) {
+    untie $$_ for @_;
+    return;
+}
+
 1;
 
 __END__
+
+=encoding utf-8
 
 =head1 SYNOPSIS
 
@@ -46,8 +54,17 @@ __END__
     $value = undef;    # $value gets set to 0
     $value = ();       # $value gets set to 0
 
+    unbooleanise $value;  # same as unbooleanize
+    $value = [];  # $value gets set to []
+    …
+
 =method C<booleanise> or C<booleanize>
 
 Accepts scalar variables which will be booleani{s|z}ed. Once booleani{s|z}ed,
 the variable will convert all values that are assigned to it to their
-corresponding Boolean values.
+corresponding Boolean values. No effect on already booleani{s|z}ed variables.
+
+=method C<unbooleanise> or C<unbooleanize>
+
+Accepts scalar variables which will be unbooleani{s|z}ed if already
+booleani{s|z}ed. No effect if variables passed are not booleanised already.

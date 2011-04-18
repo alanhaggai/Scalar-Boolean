@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::More 'tests' => 12;
+use Test::More 'tests' => 13;
 use Scalar::Boolean;
 
 booleanise my $value;
@@ -43,3 +43,8 @@ is( $value, 1, q/[] is 1/ );
 
 $value = {};
 is( $value, 1, q/{} is 1/ );
+
+unbooleanise $value;
+
+$value = 'unbooleanised value';
+is( $value, 'unbooleanised value', q/'unbooleanised value' is 'unbooleanised value'/ );
