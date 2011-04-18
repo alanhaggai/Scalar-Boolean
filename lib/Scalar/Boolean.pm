@@ -10,11 +10,10 @@ package Scalar::Boolean;
 
 # ABSTRACT: Makes scalar variables store Boolean values only
 
-use base 'Exporter';
-our @EXPORT = qw( booleanise booleanize unbooleanise unbooleanize );
-
 use Tie::Scalar;
-use base 'Tie::StdScalar';
+
+use base qw( Exporter Tie::StdScalar );
+our @EXPORT = qw( booleanise booleanize unbooleanise unbooleanize );
 
 sub STORE {
     my ( $ref, $value ) = @_;
