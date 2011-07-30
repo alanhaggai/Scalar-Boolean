@@ -72,6 +72,11 @@ C<booleanise>d. No effect on not already C<booleanise>d variables.
 Accepts a single value and returns its boolean value without affecting its
 original value.
 
+=head1 PERFORMANCE
+
+For performance reasons, Scalar::Boolean prefers L<Variable::Magic> if it is
+installed, else uses Tie::Scalar for magic.
+
 =head1 ACKNOWLEDGEMENT
 
 Many thanks to B<Eric Brine> (B<ikegami>) for suggesting several improvements, for
