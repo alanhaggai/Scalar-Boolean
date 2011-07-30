@@ -6,16 +6,14 @@ package Scalar::Boolean;
 
 use base qw( Exporter );
 our @EXPORT = qw(
-    boolean
-    bool   booleanise   booleanize
-    unbool unbooleanise unbooleanize
+  boolean
+  bool   booleanise   booleanize
+  unbool unbooleanise unbooleanize
 );
 
 my $use_variable_magic = 1;
 
-eval {
-    require Variable::Magic;
-};
+eval { require Variable::Magic };
 if ($@) {
     $use_variable_magic = 0;
 }
