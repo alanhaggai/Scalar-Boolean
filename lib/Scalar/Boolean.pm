@@ -56,6 +56,9 @@ __END__
     unbool $value;
     $value = 'foo';  # $value gets set to 'foo'
 
+    boolean [];     # returns 1
+    boolean undef;  # returns 0
+
 =method C<bool> or C<booleanise> or C<booleanize>
 
 Accepts scalar variables which will be C<booleanise>d. Once C<booleanise>d,
