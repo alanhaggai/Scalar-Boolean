@@ -45,7 +45,7 @@ __END__
 
     use Scalar::Boolean;
 
-    booleanize my $value;  # you can even use `booleanise`
+    bool my $value;
     $value = [];       # $value gets set to 1
     $value = 'Perl';   # $value gets set to 1
     $value = '';       # $value gets set to 0
@@ -53,7 +53,7 @@ __END__
     $value = undef;    # $value gets set to 0
     $value = ();       # $value gets set to 0
 
-    unbooleanise $value;  # same as `unbooleanize`
+    unbool $value;
     $value = 'foo';  # $value gets set to 'foo'
 
 =method C<bool> or C<booleanise> or C<booleanize>
