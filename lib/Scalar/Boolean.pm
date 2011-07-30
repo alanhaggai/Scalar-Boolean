@@ -1,41 +1,36 @@
 use strict;
 use warnings;
 
-BEGIN {
-    *Scalar::Boolean::booleanize   = \&Scalar::Boolean::booleanise;
-    *Scalar::Boolean::unbooleanize = \&Scalar::Boolean::unbooleanise;
-}
-
+# ABSTRACT: Makes scalar variables store Boolean values only
 package Scalar::Boolean;
 
-# ABSTRACT: Makes scalar variables store Boolean values only
-
-use Tie::Scalar;
-
-use base qw( Exporter Tie::StdScalar );
+use base qw( Exporter );
 our @EXPORT = qw( booleanise booleanize unbooleanise unbooleanize );
 
-sub STORE {
-    my ( $ref, $value ) = @_;
-    $$ref = $value ? 1 : 0;
-    return;
+my $use_variable_magic = 1;
+
+eval {
+    require Variable::Magic;
+};
+if ($@) {
+    $use_variable_magic = 0;
 }
 
-sub TIESCALAR {
-    my ( $class, $value ) = @_;
-    $value = $value ? 1 : 0;
-    return bless \$value, $class;
+if ($use_variable_magic) {
+    require Scalar::Boolean::VM;
+
+    *booleanise   = *Scalar::Boolean::VM::booleanise;
+    *unbooleanise = *Scalar::Boolean::VM::unbooleanise;
+}
+else {
+    require Scalar::Boolean::Tie;
+
+    *booleanise   = *Scalar::Boolean::Tie::booleanise;
+    *unbooleanise = *Scalar::Boolean::Tie::unbooleanise;
 }
 
-sub booleanise(\$;\$\$\$\$\$\$\$\$\$\$\$\$\$\$\$\$\$\$\$) {
-    tie $$_, __PACKAGE__, $$_ for @_;
-    return;
-}
-
-sub unbooleanise(\$;\$\$\$\$\$\$\$\$\$\$\$\$\$\$\$\$\$\$\$) {
-    untie $$_ for @_;
-    return;
-}
+*booleanize   = *booleanise;
+*unbooleanize = *unbooleanise;
 
 1;
 
@@ -66,3 +61,8 @@ corresponding Boolean values. No effect on already C<booleanise>d variables.
 
 Accepts scalar variables which will be C<unbooleanise>d if already
 C<booleanise>d. No effect on not already C<booleanise>d variables.
+
+=head1 ACKNOWLEDGEMENT
+
+Many thanks to B<Eric Brine> (B<ikegami>) for suggesting several improvements, for
+valuable suggestions and also for sending sample code. Thank you Eric! :-)

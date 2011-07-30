@@ -3,10 +3,12 @@
 use strict;
 use warnings;
 
-use Test::More 'tests' => 13;
+use Test::More 'tests' => 14;
+
 use Scalar::Boolean;
 
 booleanise my $foo;
+is( $foo, 0, q/uninitialised variable is 0/ );
 
 $foo = 'true';
 is( $foo, 1, q/'true' is 1/ );
