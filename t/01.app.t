@@ -56,5 +56,3 @@ is( boolean $foo, 1, q/'bar' is 1/ );
 
 $foo = '';
 is( boolean $foo, 0, q/'' is 0/ );
-
-warn boolean [];
