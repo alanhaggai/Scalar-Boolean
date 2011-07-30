@@ -76,7 +76,7 @@ original value.
 =head1 PERFORMANCE
 
 For performance reasons, Scalar::Boolean prefers L<Variable::Magic> if it is
-installed, else uses Tie::Scalar for magic.
+installed, else uses L<Tie::Scalar> for magic.
 
 =head1 ACKNOWLEDGEMENT
 
