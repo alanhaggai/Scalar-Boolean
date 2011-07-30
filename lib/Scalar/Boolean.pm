@@ -5,7 +5,11 @@ use warnings;
 package Scalar::Boolean;
 
 use base qw( Exporter );
-our @EXPORT = qw( booleanise booleanize unbooleanise unbooleanize boolean );
+our @EXPORT = qw(
+    boolean
+    bool   booleanise   booleanize
+    unbool unbooleanise unbooleanize
+);
 
 my $use_variable_magic = 1;
 
@@ -29,9 +33,9 @@ else {
     *unbooleanise = *Scalar::Boolean::Tie::unbooleanise;
 }
 
-*booleanize   = *booleanise;
-*unbooleanize = *unbooleanise;
-*boolean      = *Scalar::Boolean::Value::boolean;
+*bool   = *booleanize   = *booleanise;
+*unbool = *unbooleanize = *unbooleanise;
+*boolean = *Scalar::Boolean::Value::boolean;
 
 1;
 
@@ -52,13 +56,13 @@ __END__
     unbooleanise $value;  # same as `unbooleanize`
     $value = 'foo';  # $value gets set to 'foo'
 
-=method C<booleanise> or C<booleanize>
+=method C<bool> or C<booleanise> or C<booleanize>
 
 Accepts scalar variables which will be C<booleanise>d. Once C<booleanise>d,
 the variable will convert all values that are assigned to it to their
 corresponding Boolean values. No effect on already C<booleanise>d variables.
 
-=method C<unbooleanise> or C<unbooleanize>
+=method C<unbool> or C<unbooleanise> or C<unbooleanize>
 
 Accepts scalar variables which will be C<unbooleanise>d if already
 C<booleanise>d. No effect on not already C<booleanise>d variables.
