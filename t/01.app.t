@@ -7,7 +7,7 @@ use Test::More 'tests' => 16;
 
 use Scalar::Boolean;
 
-booleanise my $foo;
+bool my $foo;
 is( $foo, 0, q/uninitialised variable is 0/ );
 
 $foo = 'true';
@@ -46,7 +46,7 @@ is( $foo, 1, q/[] is 1/ );
 $foo = {};
 is( $foo, 1, q/{} is 1/ );
 
-unbooleanise $foo;
+unbool $foo;
 
 $foo = 'unbooleanised foo';
 is( $foo, 'unbooleanised foo', q/'unbooleanised foo' is 'unbooleanised foo'/ );
