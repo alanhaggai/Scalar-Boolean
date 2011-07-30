@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::More 'tests' => 14;
+use Test::More 'tests' => 16;
 
 use Scalar::Boolean;
 
@@ -50,3 +50,11 @@ unbooleanise $foo;
 
 $foo = 'unbooleanised foo';
 is( $foo, 'unbooleanised foo', q/'unbooleanised foo' is 'unbooleanised foo'/ );
+
+$foo = 'bar';
+is( boolean $foo, 1, q/'bar' is 1/ );
+
+$foo = '';
+is( boolean $foo, 0, q/'' is 0/ );
+
+warn boolean [];

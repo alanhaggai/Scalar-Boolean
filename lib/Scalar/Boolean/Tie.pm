@@ -4,18 +4,25 @@ use warnings;
 package Scalar::Boolean::Tie;
 
 use Tie::Scalar;
-
 use base qw( Tie::StdScalar );
+
+use Scalar::Boolean::Value;
 
 sub STORE {
     my ( $ref, $value ) = @_;
-    $$ref = $value ? 1 : 0;
+    $$ref =
+      $value
+      ? Scalar::Boolean::Value::true
+      : Scalar::Boolean::Value::false;
     return;
 }
 
 sub TIESCALAR {
     my ( $class, $value ) = @_;
-    $value = $value ? 1 : 0;
+    $value =
+      $value
+      ? Scalar::Boolean::Value::true
+      : Scalar::Boolean::Value::false;
     return bless \$value, $class;
 }
 

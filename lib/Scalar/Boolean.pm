@@ -5,7 +5,7 @@ use warnings;
 package Scalar::Boolean;
 
 use base qw( Exporter );
-our @EXPORT = qw( booleanise booleanize unbooleanise unbooleanize );
+our @EXPORT = qw( booleanise booleanize unbooleanise unbooleanize boolean );
 
 my $use_variable_magic = 1;
 
@@ -31,6 +31,7 @@ else {
 
 *booleanize   = *booleanise;
 *unbooleanize = *unbooleanise;
+*boolean      = *Scalar::Boolean::Value::boolean;
 
 1;
 
@@ -61,6 +62,11 @@ corresponding Boolean values. No effect on already C<booleanise>d variables.
 
 Accepts scalar variables which will be C<unbooleanise>d if already
 C<booleanise>d. No effect on not already C<booleanise>d variables.
+
+=method C<boolean>
+
+Accepts a single value and returns its boolean value without affecting its
+original value.
 
 =head1 ACKNOWLEDGEMENT
 

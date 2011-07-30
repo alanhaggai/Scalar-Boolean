@@ -5,9 +5,14 @@ package Scalar::Boolean::VM;
 
 use Variable::Magic qw( wizard cast dispell );
 
+use Scalar::Boolean::Value;
+
 sub fixer {
     my $ref = $_[0];
-    $$ref = $$ref ? 1 : 0;
+    $$ref =
+      $$ref
+      ? Scalar::Boolean::Value::true
+      : Scalar::Boolean::Value::false;
 }
 
 my $wiz = wizard
