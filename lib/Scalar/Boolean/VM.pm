@@ -1,7 +1,8 @@
 use strict;
 use warnings;
 
-package Scalar::Boolean::VM;
+package    #private
+  Scalar::Boolean::VM;
 
 use Variable::Magic qw( wizard cast dispell );
 

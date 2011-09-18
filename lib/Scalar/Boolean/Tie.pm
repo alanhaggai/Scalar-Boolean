@@ -1,7 +1,8 @@
 use strict;
 use warnings;
 
-package Scalar::Boolean::Tie;
+package    #private
+  Scalar::Boolean::Tie;
 
 use Tie::Scalar;
 use base qw( Tie::StdScalar );

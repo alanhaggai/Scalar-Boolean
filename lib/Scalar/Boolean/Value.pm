@@ -1,7 +1,8 @@
 use strict;
 use warnings;
 
-package Scalar::Boolean::Value;
+package    #private
+  Scalar::Boolean::Value;
 
 my $true  = bless \do { ( my $data = 1 ) }, __PACKAGE__;
 my $false = bless \do { ( my $data = 0 ) }, __PACKAGE__;
